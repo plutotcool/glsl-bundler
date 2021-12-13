@@ -61,7 +61,7 @@ await bundle(`
 
 ### Bundler
 
-The `bundler` transforms glsl source code given an array of [transform functions](src/bundler.ts#L1):
+The `bundler` factory creates a function that transforms glsl source code given an array of [transform functions](src/bundler.ts#L1):
 
 ```typescript
 import { bundler } from '@plutotcool/glsl-bundler'
@@ -143,7 +143,7 @@ await load(`
 // }
 ```
 
-> Note that, even if the `pi.glsl` is imported twice, it is only outputed once as soon as needed.
+> Note that, even if `pi.glsl` is imported twice, it is only outputed once as soon as needed.
 > On node, the loader follows node module resolution using [import-meta-resolve](https://github.com/wooorm/import-meta-resolve).
 
 Alternatively, the `load` shorcut can be used to load shaders directly from file system or network:
