@@ -2,6 +2,8 @@
 
 Functional regex-based glsl bundler, loader and minifier. Runs both on node and the browser.
 
+*Currently in alpha*
+
 ## Install
 
 ```bash
