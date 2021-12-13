@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+    - main
+    - alpha
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 14
+    - run: yarn
+    - run: yarn build
+    - uses: plutotcool/release@v1.1.2
+      with:
+        github_token:  ${{ secrets.GITHUB_TOKEN }}
+        npm_token: ${{ secrets.NPM_TOKEN }}
