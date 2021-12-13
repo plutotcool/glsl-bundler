@@ -1,0 +1,34 @@
+{
+  "type": "module",
+  "version": "1.0.0",
+  "name": "@plutotcool/glsl-bundler",
+  "description": "Functional regex-based glsl bundler, loader and minifier",
+  "author": "Julien Dargelos <julien@plutot.cool>",
+  "license": "MIT",
+  "repository": "plutotcool/glsl-bundler",
+  "homepage": "https://github.com/plutotcool/glsl-bundler#readme",
+  "bugs": "https://github.com/plutotcool/glsl-bundler/issues",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsc --noEmit -w",
+    "build": "tsc --noEmit && vite build",
+    "example:node": "vite build -c example/vite.node.config.ts && node example/dist/index.js",
+    "example:browser": "vite dev -c example/vite.browser.config.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.12",
+    "tsc": "^2.0.3",
+    "typescript": "^4.5.3",
+    "vite": "^2.7.1"
+  },
+  "dependencies": {
+    "import-meta-resolve": "^1.1.1"
+  },
+  "engines": {
+    "node": ">=14.17"
+  }
+}
