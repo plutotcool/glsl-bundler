@@ -10,12 +10,14 @@
   "bugs": "https://github.com/plutotcool/glsl-bundler/issues",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "browser": "dist/index.umd.js",
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "tsc --noEmit -w",
-    "build": "tsc --noEmit && vite build",
+    "build": "vite build && tsc",
     "example:node": "vite build -c example/vite.node.config.ts && node example/dist/index.js",
     "example:browser": "vite dev -c example/vite.browser.config.ts"
   },
