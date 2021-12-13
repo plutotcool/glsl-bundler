@@ -199,7 +199,7 @@ minify(`
 `)
 
 // #define a 3.141592653589793
-// float b(float c){return c/a*180.}void main(){float d=b(a*2.)}
+// float b(float c){return c/a*180.;}void main(){float d=b(a*2.);}
 ```
 
 Alternatively, the `minify` shorcut can be used to get the same result in a single call:
