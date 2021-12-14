@@ -16,16 +16,23 @@
     "dist"
   ],
   "scripts": {
-    "dev": "tsc --noEmit -w",
-    "build": "vite build && tsc",
-    "example:node": "vite build -c example/vite.node.config.ts && node example/dist/index.js",
-    "example:browser": "vite dev -c example/vite.browser.config.ts"
+    "build": "rollup -c",
+    "test": "jest"
   },
   "devDependencies": {
+    "@types/jest": "^27.0.3",
     "@types/node": "^16.11.12",
-    "tsc": "^2.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "eslint": "^8.4.1",
+    "jest": "^27.4.5",
+    "rollup": "^2.61.1",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-ts": "^2.0.4",
+    "ts-jest": "^27.1.1",
     "typescript": "^4.5.3",
-    "vite": "^2.7.1"
   },
   "dependencies": {
     "import-meta-resolve": "^1.1.1"

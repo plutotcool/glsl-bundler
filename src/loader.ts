@@ -1,6 +1,6 @@
 import { bundle, Transform } from './bundler'
 
-const NODE = typeof process !== 'undefined'
+const NODE = typeof window === 'undefined'
 const PRAGMA = /^\s*#pragma\s+loader\s*:\s*import\s+'(.+?)'\s*$/gm
 
 export function loader(
