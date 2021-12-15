@@ -10,9 +10,10 @@ export function loader(
 ): Transform {
   return (source: string) => {
     return bundle(source, [...(source.match(PRAGMA) || []).map((pragma) => {
-      const pattern = new RegExp(`^${pragma}$`, 'm')
-      const loaded = load(pragma.replace(PRAGMA, '$1'), base, [], ignore)
-      return async (source: string) => source.replace(pattern, await loaded)
+      return async (source: string) => source.replace(
+        new RegExp(`^${pragma}$`, 'm'),
+        await load(pragma.replace(PRAGMA, '$1'), base, [], ignore)
+      )
     }), ...transforms])
   }
 }
