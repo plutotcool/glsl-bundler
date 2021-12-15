@@ -1,4 +1,4 @@
-import fs from 'fs-extra'
+import { promises as fs } from 'fs'
 import JSDomEnvironment from 'jest-environment-jsdom'
 
 export default class BrowserEnvironment extends JSDomEnvironment {
