@@ -1,18 +1,19 @@
 import { bundle, Transform } from './bundler'
 
 const NODE = typeof window === 'undefined'
-const PRAGMA = /^\s*#pragma\s+loader\s*:\s*import\s+'(.+?)'\s*$/gm
+const INCLUDE_PATTERN = /^\s*#\s*include\s+(.+?)\s*$/gm
 
 export function loader(
   base: URL | string = '.',
   transforms: Transform[] = [],
+  pattern: RegExp = INCLUDE_PATTERN,
   ignore: string[] = []
 ): Transform {
   return (source: string) => {
-    return bundle(source, [...(source.match(PRAGMA) || []).map((pragma) => {
+    return bundle(source, [...(source.match(pattern) || []).map((match) => {
       return async (source: string) => source.replace(
-        new RegExp(`^${pragma}$`, 'm'),
-        await load(pragma.replace(PRAGMA, '$1'), base, [], ignore)
+        new RegExp(`^${match}$`, 'm'),
+        await load(match.replace(pattern, '$1'), base, [], pattern, ignore)
       )
     }), ...transforms])
   }
@@ -22,6 +23,7 @@ export async function load(
   path: string,
   base: URL | string = '.',
   transforms: Transform[] = [],
+  pattern: RegExp = INCLUDE_PATTERN,
   ignore: string[] = []
 ): Promise<string> {
   path = await resolve(path, base)
@@ -32,7 +34,7 @@ export async function load(
 
   ignore.push(path)
 
-  return loader(dirname(path), transforms, ignore)(await read(path))
+  return loader(dirname(path), transforms, pattern, ignore)(await read(path))
 }
 
 async function resolve(

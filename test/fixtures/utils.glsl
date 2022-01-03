@@ -1,4 +1,4 @@
-#pragma loader: import './pi.glsl'
+#include ./pi.glsl
 
 struct Light {
   vec2 direction;

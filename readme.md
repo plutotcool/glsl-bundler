@@ -19,7 +19,7 @@ yarn add @plutotcool/glsl-bundler
 
 ### Common examples
 
-Load a shader as a string and resolve import pragmas:
+Load a shader as a string and resolve `#include` directives:
 
 ```typescript
 import { load } from '@plutotcool/glsl-bundler'
@@ -50,8 +50,8 @@ const bundle = bundler([
 ])
 
 await bundle(`
-  #pragma loader: import './pi.glsl'
-  #pragma loader: import './rad2deg.glsl'
+  #include ./pi.glsl
+  #include ./rad2deg.glsl
 
   void main() {
     float turn = rad2deg(PI * 2.0);
@@ -100,12 +100,12 @@ bundle(`
 
 ### Loader
 
-The `loader` factory creates an asynchronous transform function that resolves import pragmas from file system (node) or network (browser):
+The `loader` factory creates an asynchronous transform function that resolves `#include` directives from file system (node) or network (browser):
 
 ```glsl
 // ./rad2deg.glsl
 
-#pragma loader: import './pi.glsl'
+#include ./pi.glsl
 
 float rad2deg(float angle) {
   return angle / PI * 180.0;
@@ -124,8 +124,8 @@ import { loader } from '@plutotcool/glsl-bundler'
 const load = loader(import.meta.url, [ /* Additional transform functions */ ])
 
 await load(`
-  #pragma loader: import './pi.glsl'
-  #pragma loader: import './rad2deg.glsl'
+  #include ./pi.glsl
+  #include ./rad2deg.glsl
 
   void main() {
     float turn = rad2deg(PI * 2.0);
@@ -143,7 +143,7 @@ await load(`
 // }
 ```
 
-> Note that, even if `pi.glsl` is imported twice, it is only outputed once as soon as needed.
+> Note that, even if `pi.glsl` is included twice, it is only outputed once as soon as needed.
 > On node, the loader follows node module resolution using [import-meta-resolve](https://github.com/wooorm/import-meta-resolve).
 
 Alternatively, the `load` shortcut can be used to load shaders directly from file system or network:
@@ -151,8 +151,8 @@ Alternatively, the `load` shortcut can be used to load shaders directly from fil
 ```glsl
 // ./fragment.glsl
 
-#pragma loader: import './pi.glsl'
-#pragma loader: import './rad2deg.glsl'
+#include ./pi.glsl
+#include ./rad2deg.glsl
 
 void main() {
   float turn = rad2deg(PI * 2.0);

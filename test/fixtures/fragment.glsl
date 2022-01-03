@@ -1,5 +1,5 @@
-#pragma loader: import './pi.glsl'
-#pragma loader: import './utils.glsl'
+#include ./pi.glsl
+#include ./utils.glsl
 
 uniform float a;
 uniform Light light;
