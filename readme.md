@@ -15,7 +15,7 @@ yarn add @plutotcool/glsl-bundler
 - [Common examples](#common-examples)
 - [Bundler](#bundler)
 - [Loader](#loader)
-- [Minifier](#minifer)
+- [Minifier](#minifier)
 
 ### Common examples
 
