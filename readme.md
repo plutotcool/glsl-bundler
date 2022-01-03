@@ -1,9 +1,10 @@
 # glsl-bundler
 
-[![test](https://github.com/plutotcool/glsl-bundler/workflows/test/badge.svg?branch=alpha)](https://github.com/plutotcool/glsl-bundler/actions?workflow=test)
-[![build](https://github.com/plutotcool/glsl-bundler/workflows/build/badge.svg?branch=alpha)](https://github.com/plutotcool/glsl-bundler/actions?workflow=build)
-[![release](https://github.com/plutotcool/glsl-bundler/workflows/release/badge.svg?branch=alpha)](https://github.com/plutotcool/glsl-bundler/actions?workflow=release)
+[![test](https://github.com/plutotcool/glsl-bundler/workflows/test.yml/badge.svg?branch=alpha)](https://github.com/plutotcool/glsl-bundler/actions?workflow=test)
+[![build](https://github.com/plutotcool/glsl-bundler/workflows/build.yml/badge.svg?branch=alpha)](https://github.com/plutotcool/glsl-bundler/actions?workflow=build)
+[![release](https://github.com/plutotcool/glsl-bundler/workflows/release.yml/badge.svg?branch=alpha)](https://github.com/plutotcool/glsl-bundler/actions?workflow=release)
 [![version](https://img.shields.io/github/package-json/v/plutotcool/glsl-bundler/alpha)](https://github.com/plutotcool/glsl-bundler)
+![types](https://img.shields.io/npm/types/@plutotcool/glsl-bundler)
 
 Functional regex-based glsl bundler, loader and minifier. Runs both on node and the browser.
 
