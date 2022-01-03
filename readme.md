@@ -1,8 +1,8 @@
 # glsl-bundler
 
-[![test](https://github.com/plutotcool/glsl-bundler/actions/workflows/test/badge.svg?branch=alpha)](https://github.com/plutotcool/glsl-bundler/actions?workflow=test)
-[![build](https://github.com/plutotcool/glsl-bundler/actions/workflows/build/badge.svg?branch=alpha)](https://github.com/plutotcool/glsl-bundler/actions?workflow=build)
-[![release](https://github.com/plutotcool/glsl-bundler/actions/workflows/release/badge.svg?branch=alpha)](https://github.com/plutotcool/glsl-bundler/actions?workflow=release)
+[![test](https://github.com/plutotcool/glsl-bundler/actions/workflows/test.yml/badge.svg)](https://github.com/plutotcool/glsl-bundler/actions?workflow=test)
+[![build](https://github.com/plutotcool/glsl-bundler/actions/workflows/build.yml/badge.svg)](https://github.com/plutotcool/glsl-bundler/actions?workflow=build)
+[![release](https://github.com/plutotcool/glsl-bundler/actions/workflows/release.yml/badge.svg)](https://github.com/plutotcool/glsl-bundler/actions?workflow=release)
 [![version](https://img.shields.io/github/package-json/v/plutotcool/glsl-bundler/alpha)](https://github.com/plutotcool/glsl-bundler)
 ![types](https://img.shields.io/npm/types/@plutotcool/glsl-bundler)
 
