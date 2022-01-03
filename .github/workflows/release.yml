@@ -13,6 +13,7 @@ jobs:
       with:
         node-version: 14
     - run: yarn
+    - run: yarn test
     - run: yarn build
     - uses: cycjimmy/semantic-release-action@v2
       env:
