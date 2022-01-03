@@ -167,7 +167,7 @@ await load('./fragment.glsl', import.meta.url, [ /* Additional transform functio
 
 ### Minifier
 
-The `minifier` factory creates a synhronous transform function that removes unnecessary characters and renames tokens:
+The `minifier` factory creates a synchronous transform function that removes unnecessary characters and renames tokens:
 
 ```typescript
 import { minifier } from '@plutotcool/glsl-bundler'
