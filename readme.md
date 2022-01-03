@@ -84,7 +84,7 @@ bundle(`
 
 > Note that the resulting `bundle` function is itself a transform function
 
-Alternatively, the `bundle` shorcut can be used to get the same result in a single call:
+Alternatively, the `bundle` shortcut can be used to get the same result in a single call:
 
 ```typescript
 import { bundle } from '@plutotcool/glsl-bundler'
@@ -146,7 +146,7 @@ await load(`
 > Note that, even if `pi.glsl` is imported twice, it is only outputed once as soon as needed.
 > On node, the loader follows node module resolution using [import-meta-resolve](https://github.com/wooorm/import-meta-resolve).
 
-Alternatively, the `load` shorcut can be used to load shaders directly from file system or network:
+Alternatively, the `load` shortcut can be used to load shaders directly from file system or network:
 
 ```glsl
 // ./fragment.glsl
@@ -202,7 +202,7 @@ minify(`
 // float b(float c){return c/a*180.;}void main(){float d=b(a*2.);}
 ```
 
-Alternatively, the `minify` shorcut can be used to get the same result in a single call:
+Alternatively, the `minify` shortcut can be used to get the same result in a single call:
 
 ```typescript
 import { minify } from '@plutotcool/glsl-bundler'
