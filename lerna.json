@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "npmClient": "yarn",
+  "packages": ["packages/*"],
+  "command": {
+    "version": {
+      "allowBranch": ["main", "alpha", "beta", "next"],
+      "message": "ci(release): %s",
+      "conventionalCommits": true,
+      "createRelease": "github",
+      "yes": true
+    }
+  }
+}

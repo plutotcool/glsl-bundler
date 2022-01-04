@@ -3,6 +3,8 @@ on:
     branches:
     - main
     - alpha
+    - beta
+    - next
 
 jobs:
   release:
@@ -12,13 +14,31 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: 14
+
     - run: yarn
     - run: yarn test
     - run: yarn build
-    - uses: cycjimmy/semantic-release-action@v2
+
+    - run: yarn release --conventional-graduate
+      if: ${{ github.ref_name == 'main' }}
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         NPM_CONFIG_REGISTRY: https://registry.npmjs.org
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_NPM_CONFIG_REGISTRY: https://npm.pkg.github.com
+
+    - run: yarn release --conventional-graduate
+      if: ${{ github.ref_name == 'main' }}
+      env:
+        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_CONFIG_REGISTRY: https://npm.pkg.github.com
+
+    - run: yarn release --conventional-prerelease --preid $GITHUB_REF
+      if: ${{ github.ref_name != 'main' }}
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_CONFIG_REGISTRY: https://registry.npmjs.org
+
+    - run: yarn release --conventional-prerelease --preid $GITHUB_REF
+      if: ${{ github.ref_name != 'main' }}
+      env:
+        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_CONFIG_REGISTRY: https://npm.pkg.github.com
