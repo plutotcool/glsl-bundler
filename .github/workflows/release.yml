@@ -23,30 +23,26 @@ jobs:
     - run: yarn test
     - run: yarn build
 
-    - run: yarn release --conventional-graduate
-      if: ${{ github.ref_name == 'main' }}
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        NPM_CONFIG_REGISTRY: https://registry.npmjs.org
+    - run: echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} > .npmrc
 
     - run: yarn release --conventional-graduate
       if: ${{ github.ref_name == 'main' }}
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_CONFIG_REGISTRY: https://npm.pkg.github.com
 
     - run: yarn release --conventional-prerelease --preid $GITHUB_REF_NAME
       if: ${{ github.ref_name != 'main' }}
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        NPM_CONFIG_REGISTRY: https://registry.npmjs.org
+
+    - run: echo //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }} > .npmrc
+
+    - run: yarn release --conventional-graduate
+      if: ${{ github.ref_name == 'main' }}
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - run: yarn release --conventional-prerelease --preid $GITHUB_REF_NAME
       if: ${{ github.ref_name != 'main' }}
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_CONFIG_REGISTRY: https://npm.pkg.github.com
