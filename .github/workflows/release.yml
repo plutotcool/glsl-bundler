@@ -22,23 +22,27 @@ jobs:
     - run: yarn release --conventional-graduate
       if: ${{ github.ref_name == 'main' }}
       env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         NPM_CONFIG_REGISTRY: https://registry.npmjs.org
 
     - run: yarn release --conventional-graduate
       if: ${{ github.ref_name == 'main' }}
       env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_CONFIG_REGISTRY: https://npm.pkg.github.com
 
-    - run: yarn release --conventional-prerelease --preid $GITHUB_REF
+    - run: yarn release --conventional-prerelease --preid $GITHUB_REF_NAME
       if: ${{ github.ref_name != 'main' }}
       env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         NPM_CONFIG_REGISTRY: https://registry.npmjs.org
 
-    - run: yarn release --conventional-prerelease --preid $GITHUB_REF
+    - run: yarn release --conventional-prerelease --preid $GITHUB_REF_NAME
       if: ${{ github.ref_name != 'main' }}
       env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_CONFIG_REGISTRY: https://npm.pkg.github.com
