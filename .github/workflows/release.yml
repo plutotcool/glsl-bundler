@@ -23,7 +23,9 @@ jobs:
     - run: yarn test
     - run: yarn build
 
-    - run: echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} > .npmrc
+    - run: echo //registry.npmjs.org/:_authToken=$NPM_TOKEN > .npmrc
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - run: yarn release --conventional-graduate
       if: ${{ github.ref_name == 'main' }}
@@ -35,7 +37,9 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - run: echo //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }} > .npmrc
+    - run: echo //npm.pkg.github.com/:_authToken=$NPM_TOKEN > .npmrc
+      env:
+        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - run: yarn release --conventional-graduate
       if: ${{ github.ref_name == 'main' }}
