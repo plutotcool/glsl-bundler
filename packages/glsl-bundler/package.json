@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "version": "1.0.0-alpha.12",
+  "version": "1.0.1-alpha.0",
   "name": "@plutotcool/glsl-bundler",
   "description": "Functional regex-based glsl bundler, loader and minifier",
   "author": "Julien Dargelos <julien@plutot.cool>",
