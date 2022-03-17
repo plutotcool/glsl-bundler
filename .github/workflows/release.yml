@@ -16,11 +16,11 @@ jobs:
         include:
           - registry: npm
             token: GITHUB_TOKEN
-            url: registry.npmjs.org
+            url: //registry.npmjs.org
 
           - registry: github
             token: NPM_TOKEN
-            url: npm.pkg.github.com
+            url: //npm.pkg.github.com
 
     steps:
     - uses: actions/checkout@v2
@@ -39,15 +39,15 @@ jobs:
     - run: echo "::set-output name=PATH::$(pwd)/.npmrc"
       id: npm-config
 
-    - run: echo //${{ matrix.url }}/:_authToken=${{ secrets[matrix.token] }} > ${{ steps.npm-config.outputs.PATH }}
+    - run: echo ${{ matrix.url }}/:_authToken=${{ secrets[matrix.token] }} > ${{ steps.npm-config.outputs.PATH }}
 
-    - run: yarn release --conventional-graduate
+    - run: yarn release --conventional-graduate --registry ${{ matrix.url }}
       if: ${{ github.ref_name == 'main' }}
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_CONFIG_USERCONFIG: ${{ steps.npm-config.outputs.PATH }}
 
-    - run: yarn release --conventional-prerelease --preid $GITHUB_REF_NAME
+    - run: yarn release --conventional-prerelease --preid $GITHUB_REF_NAME --registry ${{ matrix.url }}
       if: ${{ github.ref_name != 'main' }}
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
