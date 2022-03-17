@@ -9,6 +9,19 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        registry: [npm, github]
+        include:
+          - registry: npm
+            token: GITHUB_TOKEN
+            url: registry.npmjs.org
+
+          - registry: github
+            token: NPM_TOKEN
+            url: npm.pkg.github.com
+
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
@@ -23,26 +36,19 @@ jobs:
     - run: yarn test
     - run: yarn build
 
-    - run: echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} > .npmrc
+    - run: echo "::set-output name=PATH::$(pwd)/.npmrc"
+      id: npm-config
+
+    - run: echo //${{ matrix.url }}/:_authToken=${{ secrets[matrix.token] }} > ${{ steps.npm-config.outputs.PATH }}
 
     - run: yarn release --conventional-graduate
       if: ${{ github.ref_name == 'main' }}
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_CONFIG_USERCONFIG: ${{ steps.npm-config.outputs.PATH }}
 
     - run: yarn release --conventional-prerelease --preid $GITHUB_REF_NAME
       if: ${{ github.ref_name != 'main' }}
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - run: echo //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }} > .npmrc
-
-    - run: yarn release --conventional-graduate
-      if: ${{ github.ref_name == 'main' }}
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - run: yarn release --conventional-prerelease --preid $GITHUB_REF_NAME
-      if: ${{ github.ref_name != 'main' }}
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_CONFIG_USERCONFIG: ${{ steps.npm-config.outputs.PATH }}
