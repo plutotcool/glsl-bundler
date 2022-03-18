@@ -27,7 +27,7 @@ jobs:
 
     - run: |
         yarn config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
-        # npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+        npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
 
     - run: yarn release --conventional-graduate --registry https://registry.npmjs.org
       if: ${{ github.ref_name == 'main' }}
@@ -41,7 +41,7 @@ jobs:
 
     - run: |
         yarn config set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
-        # npm config set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
+        npm config set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
 
     - run: yarn release --conventional-graduate --registry https://npm.pkg.github.com
       if: ${{ github.ref_name == 'main' }}
