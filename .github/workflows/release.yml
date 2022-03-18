@@ -10,18 +10,6 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        registry: [npm, github]
-        include:
-          - registry: npm
-            token: GITHUB_TOKEN
-            url: registry.npmjs.org
-
-          - registry: github
-            token: NPM_TOKEN
-            url: npm.pkg.github.com
-
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
@@ -33,16 +21,33 @@ jobs:
     - run: yarn build
 
     - run: |
-        yarn config set //${{ matrix.url }}/:_authToken ${{ secrets[matrix.token] }}
         git config --local user.email "plutotcool+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
 
-    - run: yarn release --conventional-graduate --registry https://${{ matrix.url }}
+    - run: |
+        yarn config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+        yarn config
+
+    - run: yarn release --conventional-graduate --registry https://registry.npmjs.org
       if: ${{ github.ref_name == 'main' }}
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - run: yarn release --conventional-prerelease --preid $GITHUB_REF_NAME --registry https://${{ matrix.url }}
+    - run: yarn release --conventional-prerelease --preid $GITHUB_REF_NAME --registry https://registry.npmjs.org
+      if: ${{ github.ref_name != 'main' }}
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - run: |
+        yarn config set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
+        yarn config
+
+    - run: yarn release --conventional-graduate --registry https://npm.pkg.github.com
+      if: ${{ github.ref_name == 'main' }}
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - run: yarn release --conventional-prerelease --preid $GITHUB_REF_NAME --registry https://npm.pkg.github.com
       if: ${{ github.ref_name != 'main' }}
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
