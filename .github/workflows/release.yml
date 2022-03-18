@@ -7,7 +7,36 @@ on:
     - next
 
 jobs:
+  install:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 14
+
+    - run: yarn
+    - run: |
+      git config --local user.email "plutotcool+github-actions[bot]@users.noreply.github.com"
+      git config --local user.name "github-actions[bot]"
+
+  test:
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+    - run: yarn test
+
+  build:
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+    - run: yarn build
+
   release:
+    needs: [test, build]
     runs-on: ubuntu-latest
 
     strategy:
@@ -23,32 +52,14 @@ jobs:
             url: npm.pkg.github.com
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 14
-
-    - run: |
-        git config --local user.email "plutotcool+github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-
-    - run: yarn
-    - run: yarn test
-    - run: yarn build
-
-    - run: echo "::set-output name=PATH::$(pwd)/.npmrc"
-      id: npm-config
-
-    - run: echo //${{ matrix.url }}/:_authToken=${{ secrets[matrix.token] }} > ${{ steps.npm-config.outputs.PATH }}
+    - run: yarn config set //${{ matrix.url }}/:_authToken ${{ secrets[matrix.token] }}
 
     - run: yarn release --conventional-graduate --registry https://${{ matrix.url }}
       if: ${{ github.ref_name == 'main' }}
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_CONFIG_USERCONFIG: ${{ steps.npm-config.outputs.PATH }}
 
     - run: yarn release --conventional-prerelease --preid $GITHUB_REF_NAME --registry https://${{ matrix.url }}
       if: ${{ github.ref_name != 'main' }}
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_CONFIG_USERCONFIG: ${{ steps.npm-config.outputs.PATH }}
