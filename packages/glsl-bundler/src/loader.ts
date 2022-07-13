@@ -5,24 +5,22 @@ const INCLUDE_PATTERN = /^\s*#\s*include\s+(.+?)\s*$/gm
 
 export function loader(
   base: URL | string = '.',
-  transforms: Transform[] = [],
   pattern: RegExp = INCLUDE_PATTERN,
   ignore: string[] = []
 ): Transform {
   return (source: string) => {
-    return bundle(source, [...(source.match(pattern) || []).map((match) => {
+    return bundle(source, (source.match(pattern) || []).map((match) => {
       return async (source: string) => source.replace(
-        new RegExp(`^${match}$`, 'm'),
-        await load(match.replace(pattern, '$1'), base, [], pattern, ignore)
+        new RegExp(`${escapeRegExp(match.trim())}\\n?`),
+        await load(match.replace(pattern, '$1'), base, pattern, ignore)
       )
-    }), ...transforms])
+    }))
   }
 }
 
 export async function load(
   path: string,
   base: URL | string = '.',
-  transforms: Transform[] = [],
   pattern: RegExp = INCLUDE_PATTERN,
   ignore: string[] = []
 ): Promise<string> {
@@ -34,7 +32,7 @@ export async function load(
 
   ignore.push(path)
 
-  return loader(dirname(path), transforms, pattern, ignore)(await read(path))
+  return loader(dirname(path), pattern, ignore)(await read(path))
 }
 
 async function resolve(
@@ -60,4 +58,8 @@ async function read(path: string): Promise<string> {
 
 function dirname(path: string): string {
   return path.replace(/[^\/]+\/?$/, '')
+}
+
+function escapeRegExp(string: string): string {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }

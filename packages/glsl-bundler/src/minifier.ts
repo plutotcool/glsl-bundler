@@ -42,7 +42,7 @@ export function minifier({
   trimComments = true,
   trimSpaces = true,
   trimZeros = true
-}: MinifierParameters = {}, transforms: Transform[] = []): Transform {
+}: MinifierParameters = {}): Transform {
   return bundler([
     trimComments && trimCommentsTransform,
     trimSpaces && trimSpacesTransform,
@@ -50,17 +50,15 @@ export function minifier({
     renameStructs && renameStructsTransform,
     renameDefines && renameDefinesTransform,
     renameFunctions && renameFunctionsTransform,
-    renameVariables && renameVariablesTransform,
-    ...transforms
+    renameVariables && renameVariablesTransform
   ].filter(Boolean) as Transform[])
 }
 
 export function minify(
   source: string,
-  parameters: MinifierParameters = {},
-  transforms: Transform[] = []
+  parameters: MinifierParameters = {}
 ): Promise<string> | string {
-  return minifier(parameters, transforms)(source)
+  return minifier(parameters)(source)
 }
 
 function renameFunctionsTransform(source: string): string {
@@ -284,15 +282,10 @@ function uniqueName(
   let value: number
 
   while (!name || new RegExp(`\\b${name}\\b`).test(source)) {
-    name = ''
-    value = offset
-
-    while (!name || value) {
+    for (name = '', value = offset + 1; value; offset++) {
       name += chars[value % chars.length]
       value = ~~(value / chars.length)
     }
-
-    offset++
   }
 
   return [name, offset]

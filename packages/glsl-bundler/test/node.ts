@@ -3,7 +3,7 @@
  */
 
 import { promises as fs } from 'fs'
-import { minify, load } from '../src'
+import { minify, load, loader, bundle } from '../src'
 
 const fixtures: string = `${__dirname}/fixtures/`
 
@@ -17,7 +17,7 @@ it('loads shader files', async () => {
 
 it('minifies shader files', async () => {
   expect(
-    (await load('./fragment.glsl', fixtures, [minify])).trim()
+    (await bundle(await read(`${fixtures}fragment.glsl`), [loader(fixtures), minify])).trim()
   ).toBe(
     (await read(`${fixtures}bundle.min.glsl`)).trim()
   )

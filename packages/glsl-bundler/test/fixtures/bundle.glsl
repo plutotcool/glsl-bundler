@@ -1,6 +1,5 @@
 #define PI 3.141592653589793
 
-
 struct Light {
   vec2 direction;
 }

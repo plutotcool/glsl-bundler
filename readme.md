@@ -13,5 +13,5 @@ This monorepo contains the main glsl-bundler package as well as integrations for
 ## Packages
 
 - [@plutotcool/glsl-bundler](packages/glsl-bundler): Main glsl-bundler package
-- @plutotcool/rollup-plugin-glsl: Rollup plugin for glsl-bundler (*coming soon*)
+- [@plutotcool/rollup-plugin-glsl](packages/rollup-plugin-glsl): Rollup plugin for glsl-bundler
 - @plutotcool/glsl-loader: Webpack loader for glsl-bundler (*coming soon*)

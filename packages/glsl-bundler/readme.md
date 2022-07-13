@@ -127,7 +127,7 @@ float rad2deg(float angle) {
 ```typescript
 import { loader } from '@plutotcool/glsl-bundler'
 
-const load = loader(import.meta.url, [ /* Additional transform functions */ ])
+const load = loader(import.meta.url)
 
 await load(`
   #include ./pi.glsl
@@ -168,7 +168,7 @@ void main() {
 ```typescript
 import { load } from '@plutotcool/glsl-bundler'
 
-await load('./fragment.glsl', import.meta.url, [ /* Additional transform functions */])
+await load('./fragment.glsl', import.meta.url)
 ```
 
 ### Minifier
@@ -178,19 +178,16 @@ The `minifier` factory creates a synchronous transform function that removes unn
 ```typescript
 import { minifier } from '@plutotcool/glsl-bundler'
 
-const minify = minifier(
-  {
-    // Default minify parameters:
-    renameFunctions: true,
-    renameVariables: true,
-    renameDefines: true,
-    renameStructs: true,
-    trimComments: true,
-    trimSpaces: true,
-    trimZeros: true
-  },
-  [ /* Additional transform functions */ ]
-)
+const minify = minifier({
+  // Default minify parameters:
+  renameFunctions: true,
+  renameVariables: true,
+  renameDefines: true,
+  renameStructs: true,
+  trimComments: true,
+  trimSpaces: true,
+  trimZeros: true
+})
 
 minify(`
   #define PI 3.141592653589793
