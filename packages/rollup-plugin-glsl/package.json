@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "version": "1.3.0",
+  "version": "1.0.0",
   "name": "@plutotcool/rollup-plugin-glsl",
   "description": "Rollup plugin that allows imports of glsl files",
   "author": "Julien Dargelos <julien@plutot.cool>",
