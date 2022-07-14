@@ -386,6 +386,8 @@ transpile(`#version es 300
   }
 `)
 
+// #define WEBGL_VERSION 1
+// #define GLSL_VERSION 100
 // uniform diffuse sampler2D;
 //
 // varying vec2 vUv;
