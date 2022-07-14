@@ -8,14 +8,6 @@
 
 Functional regex-based bundling tools for glsl. Run both on node and the browser.
 
-#### Features
-
-- [bundle](#bundler)
-- [load](#loader)
-- [write](#writer)
-- [transpile](#transpiler)
-- [minify](#minifier)
-
 *Currently in alpha*
 
 ## Install
@@ -29,6 +21,8 @@ yarn add @plutotcool/glsl-bundler
 - [Common examples](#common-examples)
 - [Bundler](#bundler)
 - [Loader](#loader)
+- [Writer](#writer)
+- [Transpiler](#transpiler)
 - [Minifier](#minifier)
 
 ### Common examples
