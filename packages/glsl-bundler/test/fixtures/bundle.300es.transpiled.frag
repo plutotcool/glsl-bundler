@@ -1,7 +1,8 @@
 #version 300 es
-out vec4 FragColor;
-#define GLSL_VERSION 300
 #define WEBGL_VERSION 2
+#define GLSL_VERSION 300
+
+out vec4 FragColor;
 
 #define PI 3.141592653589793
 

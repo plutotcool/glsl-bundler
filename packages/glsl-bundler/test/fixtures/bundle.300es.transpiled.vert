@@ -1,6 +1,6 @@
 #version 300 es
-#define GLSL_VERSION 300
 #define WEBGL_VERSION 2
+#define GLSL_VERSION 300
 
 uniform mat4 transform;
 

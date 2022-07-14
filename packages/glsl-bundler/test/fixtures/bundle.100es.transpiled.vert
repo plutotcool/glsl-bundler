@@ -1,5 +1,6 @@
-#define GLSL_VERSION 100
 #define WEBGL_VERSION 1
+#define GLSL_VERSION 100
+
 uniform mat4 transform;
 
 attribute vec3 position;

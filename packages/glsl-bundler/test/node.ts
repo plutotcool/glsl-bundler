@@ -55,19 +55,41 @@ it('transpiles shader files', async () => {
   const vert300esAmbiguous = version(vert100es, '300 es')
   const vert100esAmbiguous = version(vert300es, null)
 
-  expect(trim(transpile(frag100es, false))).toBe(trim(frag100esT))
-  expect(trim(transpile(frag300es, false))).toBe(trim(frag100esT))
-  expect(trim(transpile(frag300es, true))).toBe(trim(frag300esT))
-  expect(trim(transpile(frag100esAmbiguous, false))).toBe(trim(frag100esT))
-  expect(trim(transpile(frag300esAmbiguous, false))).toBe(trim(frag100esT))
-  expect(trim(transpile(frag300esAmbiguous, true))).toBe(trim(frag300esT))
+  expect(trim(transpile(frag100es, { target: 'webgl1' })))
+    .toBe(trim(frag100esT))
 
-  expect(trim(transpile(vert100es, false))).toBe(trim(vert100esT))
-  expect(trim(transpile(vert300es, false))).toBe(trim(vert100esT))
-  expect(trim(transpile(vert300es, true))).toBe(trim(vert300esT))
-  expect(trim(transpile(vert100esAmbiguous, false))).toBe(trim(vert100esT))
-  expect(trim(transpile(vert300esAmbiguous, false))).toBe(trim(vert100esT))
-  expect(trim(transpile(vert300esAmbiguous, true))).toBe(trim(vert300esT))
+  expect(trim(transpile(frag300es, { target: 'webgl1' })))
+    .toBe(trim(frag100esT))
+
+  expect(trim(transpile(frag300es, { target: 'webgl2' })))
+    .toBe(trim(frag300esT))
+
+  expect(trim(transpile(frag100esAmbiguous, { target: 'webgl1' })))
+    .toBe(trim(frag100esT))
+
+  expect(trim(transpile(frag300esAmbiguous, { target: 'webgl1' })))
+    .toBe(trim(frag100esT))
+
+  expect(trim(transpile(frag300esAmbiguous, { target: 'webgl2' })))
+    .toBe(trim(frag300esT))
+
+  expect(trim(transpile(vert100es, { target: 'webgl1' })))
+    .toBe(trim(vert100esT))
+
+  expect(trim(transpile(vert300es, { target: 'webgl1' })))
+    .toBe(trim(vert100esT))
+
+  expect(trim(transpile(vert300es, { target: 'webgl2' })))
+    .toBe(trim(vert300esT))
+
+  expect(trim(transpile(vert100esAmbiguous, { target: 'webgl1' })))
+    .toBe(trim(vert100esT))
+
+  expect(trim(transpile(vert300esAmbiguous, { target: 'webgl1' })))
+    .toBe(trim(vert100esT))
+
+  expect(trim(transpile(vert300esAmbiguous, { target: 'webgl2' })))
+    .toBe(trim(vert300esT))
 })
 
 function read(path: string): Promise<string> {

@@ -1,5 +1,6 @@
-#define GLSL_VERSION 100
 #define WEBGL_VERSION 1
+#define GLSL_VERSION 100
+
 #define PI 3.141592653589793
 
 struct Light {

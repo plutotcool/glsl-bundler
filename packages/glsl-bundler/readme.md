@@ -347,8 +347,13 @@ The `transpiler` factory creates a synchronous transform function that transpile
 ```typescript
 import { transpiler } from '@plutotcool/glsl-bundler'
 
-const transpile = transpiler()
-// use transpiler(true) to target webgl2
+const transpile = transpiler({
+  // Default transpile parameters:
+  target: 'auto',
+  version: 'auto',
+  defineTarget: true,
+  defineVersion: true
+})
 
 transpile(`#version es 300
   in vec3 position;
@@ -397,10 +402,14 @@ transpile(`#version es 300
 // }
 ```
 
-> When webgl2 is targeted, the transpiler will not change the syntax since both glsl 100 es and 300 es are supported.
-> If webgl1 is targeted, the transpiler will transform the syntax to support 100 es.
+> If `target` is set to `'webgl2'` and `version` is set to `'auto'`, the transpiler will not transform the syntax since both glsl 100 es and 300 es are supported.
+>
+> If `target` is set to `'webgl1'` and `version` is set to `'auto'`, the transpiler will transform the syntax to support 100 es.
+>
 > Even if the glsl code have mixed syntaxes (when including dependencies for instance), the transpiler will always output valid glsl;
-> Either with the syntax that satisfies the version declared by the `#version` directive, but primarily with a syntax that is supported by the webgl target.
+> With the syntax that satisfies the version detected from the `#version` directive, but primarily with a syntax that is supported by the webgl target.
+>
+> If `version` is set to `'100 es'` or `'300 es'`, the transpiler will always transform the syntax to support the given glsl version.
 
 ### Minifier
 
