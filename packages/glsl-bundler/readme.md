@@ -52,7 +52,7 @@ define(source, 'PI', 3.141592653589793)
 Transpile a shader:
 
 ```typescript
-import { define } from '@plutotcool/glsl-bundler'
+import { transpile } from '@plutotcool/glsl-bundler'
 
 const source = `#version es 300
   uniform diffuse sampler2D;
