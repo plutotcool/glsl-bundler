@@ -1,10 +1,13 @@
+#version 300 es
+
 #include ./pi.glsl
 #include ./utils.glsl
 
 uniform float a;
+uniform sampler2D diffuse;
 uniform Light light;
 
-in vec2 uv;
+in vec2 vUv;
 out vec4 FragColor;
 
 void main() {
@@ -14,4 +17,7 @@ void main() {
   getDirection(light, direction);
 
   direction.z += angle;
+
+  FragColor = vec4(1.0);
+  FragColor.rgb = texture(diffuse, vUv).rgb * direction;
 }

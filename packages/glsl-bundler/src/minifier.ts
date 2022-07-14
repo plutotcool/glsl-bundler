@@ -10,7 +10,7 @@ const LEADING_TRAILING_SPACE_PATTERN = /^ *(.*?) *$/gm
 const EXTRA_SPACE_PATTERN = /  +/g
 const EXTRA_NEWLINE_PATTERN = /\n\n+/g
 const FUNCTION_PATTERN = /^.*?\b([a-z_]\w*)\s+([a-z_]\w*)\s*\(/gmi
-const VARIABLE_PATTERN = /^.*?\b\s*(?:(?:in|out|inout)\s+)?[a-zA-Z_]\w*\s+([a-zA-Z_]\w*)\s*[;,=)]/gm
+const VARIABLE_PATTERN = /^.*?\b\s*(?:(?:in|out|inout)\s+)?[a-zA-Z_]\w*\s+([a-zA-Z_]\w*)\s*[;,=)]/gm // eslint-disable-line max-len
 const STRUCT_PATTERN = /^.*?\bstruct\s+([a-zA-Z_]\w*)\s*\{/gm
 const DEFINE_PATTERN = /^#define\s+([^\s]+)/gm
 const RETURN_PATTERN = /^return$/
@@ -42,7 +42,7 @@ export function minifier({
   trimComments = true,
   trimSpaces = true,
   trimZeros = true
-}: MinifierParameters = {}): Transform {
+}: MinifierParameters = {}): Transform<string> {
   return bundler([
     trimComments && trimCommentsTransform,
     trimSpaces && trimSpacesTransform,
@@ -51,13 +51,13 @@ export function minifier({
     renameDefines && renameDefinesTransform,
     renameFunctions && renameFunctionsTransform,
     renameVariables && renameVariablesTransform
-  ].filter(Boolean) as Transform[])
+  ])
 }
 
 export function minify(
   source: string,
   parameters: MinifierParameters = {}
-): Promise<string> | string {
+): string {
   return minifier(parameters)(source)
 }
 
@@ -120,7 +120,6 @@ function renameVariablesTransform(source: string): string {
   let match: string[] | null
   let parenthesis: number
   let bracket: number
-  let character: string
 
   FUNCTION_PATTERN.lastIndex = 0
 
@@ -266,8 +265,6 @@ function trimSpacesTransform(source: string): string {
 }
 
 function trimZerosTransform(source: string): string {
-  const directives = []
-
   return source
     .replace(LEADING_ZERO_PATTERN, '$1')
     .replace(TRAILING_ZERO_PATTERN, '$1')

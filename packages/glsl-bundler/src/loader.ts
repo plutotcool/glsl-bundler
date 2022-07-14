@@ -1,4 +1,5 @@
 import { bundle, Transform } from './bundler'
+import { escapeRegExp } from './utils'
 
 const NODE = typeof window === 'undefined'
 const INCLUDE_PATTERN = /^\s*#\s*include\s+(.+?)\s*$/gm
@@ -39,6 +40,12 @@ async function resolve(
   path: string,
   base: URL | string = '.'
 ): Promise<string> {
+  base = base.toString()
+
+  if (base[base.length - 1] !== '/') {
+    base += '/'
+  }
+
   base = new URL(base, `file://${NODE
     ? process.cwd()
     : location.pathname
@@ -58,8 +65,4 @@ async function read(path: string): Promise<string> {
 
 function dirname(path: string): string {
   return path.replace(/[^\/]+\/?$/, '')
-}
-
-function escapeRegExp(string: string): string {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
