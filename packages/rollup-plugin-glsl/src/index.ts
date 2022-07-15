@@ -1,3 +1,4 @@
+import path from 'path'
 import { Plugin } from 'rollup'
 import { createFilter, FilterPattern } from '@rollup/pluginutils'
 
@@ -42,7 +43,7 @@ export function glslBundler({
       }
 
       return `export default \`${await bundle(code, [
-        loaderEnabled && loader(id),
+        loaderEnabled && loader(path.dirname(id)),
         ...transforms
       ].filter(Boolean) as Transform[])}\``
     }
