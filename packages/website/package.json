@@ -1,6 +1,6 @@
 {
 	"type": "module",
-	"version": "1.1.0-alpha.0",
+	"version": "1.1.0-alpha.1",
 	"private": true,
 	"name": "@plutotcool/glsl-bundler-website",
 	"description": "glsl-bundler website",
@@ -16,7 +16,7 @@
 	},
 	"dependencies": {
 		"@codemirror/lang-cpp": "^6.0.1",
-		"@plutotcool/glsl-bundler": "^1.1.0-alpha.0",
+		"@plutotcool/glsl-bundler": "^1.1.0-alpha.1",
 		"@uiw/codemirror-theme-github": "^4.11.4",
 		"codemirror": "^6.0.1",
 		"tweakpane": "^3.1.0"
