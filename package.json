@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "prepare": "lerna bootstrap",
-    "release": "lerna publish from-package",
+    "release": "lerna publish",
     "build": "lerna run build",
     "test": "lerna run test"
   },
