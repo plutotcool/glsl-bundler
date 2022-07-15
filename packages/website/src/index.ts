@@ -30,7 +30,9 @@ const config = {
     EditorView.theme({
       '&.cm-editor': {
         backgroundColor: 'transparent',
-        height: '100%'
+        height: '100%',
+        width: '100%',
+        position: 'relative'
       },
       '&.cm-editor.cm-focused': {
         outline: 'none'
@@ -45,8 +47,9 @@ const config = {
       },
       '.cm-scroller': {
         width: '100%',
-        padding: '20px 0',
-        display: 'flex'
+        // flexBasis: '0',
+        // marginRight: '20px',
+        padding: '20px 0'
       },
       '.cm-gutters': {
         backgroundColor: '#000',
@@ -215,7 +218,8 @@ function update() {
           trimComments: minifierParameters.trimComments,
           trimSpaces: minifierParameters.trimSpaces,
           trimZeros: minifierParameters.trimZeros
-        })
+        }),
+        (source: string) => source.trim()
       ])
     }
   })

@@ -26,9 +26,9 @@
       }
 
       header {
-        margin: 24px;
+        margin: 25px;
         height: 100px;
-        padding: 0 5px;
+        padding: 0;
         box-sizing: border-box;
         order: 1;
         display: flex;
@@ -40,8 +40,8 @@
 
       aside {
         background: rgba(255, 255, 255, 0.04);
-        height: calc(100% - 168px);
-        margin: 20px 20px 0 20px;
+        height: calc(100% - 210px);
+        margin: 20px;
         border-radius: 12px;
         padding: 16px 26px;
         box-sizing: border-box;
@@ -52,7 +52,7 @@
       }
 
       main {
-        width: calc(100%  - 270px);
+        width: calc(100%  - 320px);
         height: 100%;
         display: flex;
         order: 2;
@@ -61,8 +61,10 @@
       }
 
       section {
-        width: 50%;
-        height:  100%;
+        width: calc(50% - 20px);
+        height: 100%;
+        margin-right: 20px;
+        position: relative;
         flex-grow: 0;
         flex-shrink: 0;
       }
@@ -72,7 +74,7 @@
         background-color: #fff;
         width: 20px;
         height: 1px;
-        margin: 22px 0 18px 0;
+        margin: 20px 0 20px 0;
         border-radius: 2px;
         display: block;
       }
@@ -86,6 +88,7 @@
       h1 {
         color: rgba(255, 255, 255, .4);
         margin: 0;
+        line-height: 1.6em;
       }
 
       h2 {
@@ -154,7 +157,7 @@
   <body>
     <header>
       <h2>glsl-bundler</h2>
-      <h1>glsl minifier and transpiler</h1>
+      <h1>minifier, transpiler and other bundling tools for glsl</h1>
       <nav>
         <a
           href="https://github.com/plutotcool/glsl-bundler"
@@ -167,12 +170,8 @@
     <aside></aside>
 
     <main>
-      <section>
-
-      </section>
-      <section>
-
-      </section>
+      <section></section>
+      <section></section>
     </main>
 
     <script type="module" src="./index.ts"></script>
