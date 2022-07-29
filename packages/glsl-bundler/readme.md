@@ -3,7 +3,7 @@
 [![test](https://github.com/plutotcool/glsl-bundler/actions/workflows/test.yml/badge.svg)](https://github.com/plutotcool/glsl-bundler/actions/workflows/test.yml)
 [![build](https://github.com/plutotcool/glsl-bundler/actions/workflows/build.yml/badge.svg)](https://github.com/plutotcool/glsl-bundler/actions/workflows/build.yml)
 [![release](https://github.com/plutotcool/glsl-bundler/actions/workflows/release.yml/badge.svg)](https://github.com/plutotcool/glsl-bundler/actions/workflows/release.yml)
-[![version](https://img.shields.io/github/package-json/v/plutotcool/glsl-bundler?filename=packages%2Fglsl-bundler%2Fpackage.json)](https://github.com/plutotcool/glsl-bundler/tree/alpha/packages/glsl-bundler)
+[![version](https://img.shields.io/github/package-json/v/plutotcool/glsl-bundler?filename=packages%2Fglsl-bundler%2Fpackage.json)](https://npmjs.com/package/@plutotcool/glsl-bundler)
 ![types](https://img.shields.io/npm/types/@plutotcool/glsl-bundler)
 
 Functional regex-based bundling tools for glsl. Run both on node and the browser.
