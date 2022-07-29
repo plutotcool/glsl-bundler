@@ -1,0 +1,58 @@
+{
+  "type": "module",
+  "version": "1.1.0-alpha.5",
+  "name": "@plutotcool/rollup-plugin-glsl",
+  "description": "Rollup plugin that allows imports of glsl files",
+  "author": "Julien Dargelos <julien@plutot.cool>",
+  "license": "MIT",
+  "repository": "plutotcool/glsl-bundler",
+  "homepage": "https://github.com/plutotcool/glsl-bundler/tree/main/packages/rollup-plugin-glsl#readme",
+  "bugs": "https://github.com/plutotcool/glsl-bundler/issues",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@plutotcool/glsl-bundler": "^1.1.0-alpha.5",
+    "@rollup/pluginutils": "^4.1.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.12",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "eslint": "^8.4.1",
+    "fs-extra": "^10.0.0",
+    "jest": "^27.4.5",
+    "rollup": "^2.61.1",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-ts": "^2.0.4",
+    "ts-jest": "^27.1.1",
+    "typescript": "^4.5.3"
+  },
+  "peerDependencies": {
+    "rollup": "^2.61.1"
+  },
+  "engines": {
+    "node": ">=14.17"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

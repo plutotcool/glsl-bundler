@@ -1,0 +1,27 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": "plugin:@typescript-eslint/recommended",
+  "env": { "es6": true },
+  "globals": { "require": false },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "max-len": ["warn"],
+    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-triple-slash-reference": "off",
+    "@typescript-eslint/member-delimiter-style": ["error", {
+      "multiline": {
+        "delimiter": "none"
+      },
+      "singleline": {
+        "delimiter": "comma"
+      }
+    }],
+    "@typescript-eslint/explicit-function-return-type": ["error", {
+      "allowExpressions": true,
+      "allowTypedFunctionExpressions": true,
+      "allowHigherOrderFunctions": true
+    }]
+  }
+}

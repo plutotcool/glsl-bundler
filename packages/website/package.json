@@ -1,0 +1,30 @@
+{
+	"type": "module",
+	"version": "1.1.0-alpha.5",
+	"private": true,
+	"name": "@plutotcool/glsl-bundler-website",
+	"description": "glsl-bundler website",
+	"author": "Julien Dargelos <julien@plutot.cool>",
+	"license": "MIT",
+	"repository": "plutotcool/glsl-bundler",
+	"homepage": "https://github.com/plutotcool/glsl-bundler/tree/main/packages/website#readme",
+	"bugs": "https://github.com/plutotcool/glsl-bundler/issues",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@codemirror/lang-cpp": "^6.0.1",
+		"@plutotcool/glsl-bundler": "^1.1.0-alpha.5",
+		"@uiw/codemirror-theme-github": "^4.11.4",
+		"codemirror": "^6.0.1",
+		"tweakpane": "^3.1.0"
+	},
+	"devDependencies": {
+		"vite": "^3.0.0"
+	},
+	"engines": {
+		"node": ">=14.17"
+	}
+}

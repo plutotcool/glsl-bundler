@@ -3,18 +3,50 @@ on:
     branches:
     - main
     - alpha
+    - beta
+    - next
 
 jobs:
   release:
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v2
       with:
         node-version: 14
+        cache: 'yarn'
+
     - run: yarn
     - run: yarn build
-    - uses: plutotcool/release@v1.1.2
-      with:
-        github_token:  ${{ secrets.GITHUB_TOKEN }}
-        npm_token: ${{ secrets.NPM_TOKEN }}
+    - run: yarn test
+
+    - run: |
+        git config --local user.email "plutotcool+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+
+    - run: |
+        npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+
+    - run: yarn release --conventional-graduate --registry https://registry.npmjs.org
+      if: ${{ github.ref_name == 'main' }}
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - run: yarn release --conventional-prerelease --preid $GITHUB_REF_NAME --registry https://registry.npmjs.org
+      if: ${{ github.ref_name != 'main' }}
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - run: |
+        npm config set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
+
+    - run: yarn release --conventional-graduate --registry https://npm.pkg.github.com
+      if: ${{ github.ref_name == 'main' }}
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - run: yarn release --conventional-prerelease --preid $GITHUB_REF_NAME --registry https://npm.pkg.github.com
+      if: ${{ github.ref_name != 'main' }}
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
