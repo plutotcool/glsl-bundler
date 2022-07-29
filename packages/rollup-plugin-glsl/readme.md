@@ -8,6 +8,8 @@
 
 Rollup plugin that allows imports of glsl files. Resolves `#include` directives and minifies glsl code using [@plutotcool/glsl-bundler](https://github.com/plutotcool/glsl-bundler/tree/main/packages/glsl-bundler).
 
+[Live demo](https://glsl-bundler.vercel.app)
+
 ## Install
 
 ```bash
