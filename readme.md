@@ -8,7 +8,7 @@ Functional regex-based glsl bundler, loader and minifier. Runs both on node and 
 
 This monorepo contains the main glsl-bundler package as well as integrations for various bundling tools.
 
-*Currently in alpha*
+[Live demo](glsl-bundler.vercel.app)
 
 ## Packages
 
