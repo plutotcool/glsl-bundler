@@ -8,6 +8,8 @@
 
 Functional regex-based bundling tools for glsl. Run both on node and the browser.
 
+[Live demo](https://glsl-bundler.vercel.app)
+
 ## Install
 
 ```bash
