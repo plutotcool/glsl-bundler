@@ -6,7 +6,7 @@
 [![version](https://img.shields.io/github/package-json/v/plutotcool/glsl-bundler?filename=packages%2Frollup-plugin-glsl%2Fpackage.json)](https://npmjs.com/package/@plutotcool/rollup-plugin-glsl)
 ![types](https://img.shields.io/npm/types/@plutotcool/rollup-plugin-glsl)
 
-Rollup plugin that allows imports of glsl files. Resolves `#include` directives and minifies glsl code using [@plutotcool/glsl-bundler](https://github.com/plutotcool/glsl-bundler/tree/alpha/packages/glsl-bundler).
+Rollup plugin that allows imports of glsl files. Resolves `#include` directives and minifies glsl code using [@plutotcool/glsl-bundler](https://github.com/plutotcool/glsl-bundler/tree/main/packages/glsl-bundler).
 
 ## Install
 
@@ -84,4 +84,4 @@ interface GLSLParameters {
 
 ## Usage
 
-Get more informations from [@plutotcool/glsl-bundler](https://github.com/plutotcool/glsl-bundler/tree/alpha/packages/glsl-bundler#readme) package.
+Get more informations from [@plutotcool/glsl-bundler](https://github.com/plutotcool/glsl-bundler/tree/main/packages/glsl-bundler#readme) package.
