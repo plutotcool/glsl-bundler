@@ -1,6 +1,6 @@
 # rollup-plugin-glsl-bundler
 
-Rollup plugin that allows imports of glsl files. Resolves import pragma and minifies glsl code using [@plutotcool/glsl-bundler](https://github.com/plutotcool/glsl-bundler).
+Rollup plugin that allows imports of glsl files. Resolves `#include` directives and minifies glsl code using [@plutotcool/glsl-bundler](https://github.com/plutotcool/glsl-bundler/tree/alpha/packages/glsl-bundler).
 
 ## Install
 
@@ -48,7 +48,7 @@ interface GLSLBundlerParameters {
   filter?: (id: string) => boolean
   
   /**
-   * Enable loader pragma
+   * Enable #include directives
    *
    * Default: true
    */
@@ -75,3 +75,5 @@ interface GLSLBundlerParameters {
   transforms?: ((source: string) => Promise<string> | string)[]
 }
 ```
+
+Get more informations from [@plutotcool/glsl-bundler](https://github.com/plutotcool/glsl-bundler/tree/alpha/packages/glsl-bundler#readme) package.
