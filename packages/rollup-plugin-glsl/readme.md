@@ -1,21 +1,21 @@
-# rollup-plugin-glsl-bundler
+# rollup-plugin-glsl
 
 Rollup plugin that allows imports of glsl files. Resolves `#include` directives and minifies glsl code using [@plutotcool/glsl-bundler](https://github.com/plutotcool/glsl-bundler/tree/alpha/packages/glsl-bundler).
 
 ## Install
 
 ```bash
-yarn add rollup-plugin-glsl-bundler --dev
+yarn add @plutotcool/rollup-plugin-glsl --dev
 ```
 
 ```javascript
 // rollup.config.js
 
-import { glslBundler } from '@plutotcool/rollup-plugin-glsl-bundler'
+import { glsl } from '@plutotcool/rollup-plugin-glsl'
 
 export default {
   plugins: [
-    glslBundler({ /* options */ })
+    glsl({ /* options */ })
   ]
 }
 ```
@@ -23,7 +23,7 @@ export default {
 ## Options
 
 ```typescript
-interface GLSLBundlerParameters {
+interface GLSLParameters {
   /**
    * Patterns of files that must be transformed by the plugin.
    * 
@@ -75,5 +75,7 @@ interface GLSLBundlerParameters {
   transforms?: ((source: string) => Promise<string> | string)[]
 }
 ```
+
+## Usage
 
 Get more informations from [@plutotcool/glsl-bundler](https://github.com/plutotcool/glsl-bundler/tree/alpha/packages/glsl-bundler#readme) package.

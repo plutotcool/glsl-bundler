@@ -10,7 +10,7 @@ import {
   Transform
 } from '@plutotcool/glsl-bundler'
 
-export interface GLSLBundlerParameters {
+export interface GLSLParameters {
   include?: FilterPattern
   exclude?: FilterPattern
   filter?: (id: string) => boolean
@@ -19,14 +19,14 @@ export interface GLSLBundlerParameters {
   transforms?: Transform[]
 }
 
-export function glslBundler({
+export function glsl({
   include = /\.(?:glsl|frag|vert)$/,
   exclude = undefined,
   filter = createFilter(include, exclude),
   loader: loaderEnabled = true,
   minifier: minifierParameters = true,
   transforms = []
-}: GLSLBundlerParameters = {}): Plugin {
+}: GLSLParameters = {}): Plugin {
 
   if (minifierParameters) {
     transforms = [...transforms, minifier({
@@ -35,7 +35,7 @@ export function glslBundler({
   }
 
   return {
-    name: 'glsl-bundler',
+    name: 'glsl',
 
     async transform(code, id) {
       if (!filter(id)) {

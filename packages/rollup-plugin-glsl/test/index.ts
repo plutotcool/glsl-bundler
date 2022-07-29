@@ -2,7 +2,7 @@ import * as os from 'os'
 import * as fs from 'fs-extra'
 import { rollup, OutputBundle } from 'rollup'
 import { minify, load, bundle } from '@plutotcool/glsl-bundler'
-import { glslBundler } from '../src'
+import { glsl } from '../src'
 
 let output: string
 const fixtures: string = `${__dirname}/fixtures`
@@ -23,7 +23,7 @@ it('bundles glsl', async () => {
   const rollupBundle = await rollup({
     input: `${fixtures}/index.js`,
     plugins: [
-      glslBundler({ loader: false, minifier: false })
+      glsl({ loader: false, minifier: false })
     ]
   })
 
@@ -44,7 +44,7 @@ it('loads glsl imports', async () => {
   const rollupBundle = await rollup({
     input: `${fixtures}/index.js`,
     plugins: [
-      glslBundler({ loader: true, minifier: false })
+      glsl({ loader: true, minifier: false })
     ]
   })
 
@@ -65,7 +65,7 @@ it('minifies glsl', async () => {
   const rollupBundle = await rollup({
     input: `${fixtures}/index.js`,
     plugins: [
-      glslBundler({ loader: false, minifier: true })
+      glsl({ loader: false, minifier: true })
     ]
   })
 
@@ -86,7 +86,7 @@ it('both minifies and load glsl imports by default', async () => {
   const rollupBundle = await rollup({
     input: `${fixtures}/index.js`,
     plugins: [
-      glslBundler()
+      glsl()
     ]
   })
 
