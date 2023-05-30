@@ -7,15 +7,15 @@ import { eslint } from 'rollup-plugin-eslint'
 import pkg from './package.json'
 
 export default {
-  input: 'src/index.ts',
+  input: "src/index.ts",
   output: [
-    { file: pkg.main, format: 'cjs' },
-    { file: pkg.module, format: 'es' }
+    { file: pkg.main, format: "cjs" },
+    { file: pkg.module, format: "es" },
   ],
   plugins: [
     cleaner({ targets: [path.dirname(pkg.main)] }),
     autoExternal(),
     eslint(),
     ts(),
-  ]
-}
+  ],
+};
