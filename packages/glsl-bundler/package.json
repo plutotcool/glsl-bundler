@@ -8,16 +8,16 @@
   "repository": "plutotcool/glsl-bundler",
   "homepage": "https://github.com/plutotcool/glsl-bundler/tree/main/packages/glsl-bundler#readme",
   "bugs": "https://github.com/plutotcool/glsl-bundler/issues",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "browser": "dist/index.umd.js",
+  "browser": "dist/index.umd.cjs",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "browser": "./dist/index.umd.js"
+      "require": "./dist/index.cjs",
+      "browser": "./dist/index.umd.cjs"
     }
   },
   "files": [

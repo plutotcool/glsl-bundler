@@ -13,7 +13,7 @@ export default {
   output: [
     {
       format: 'cjs',
-      entryFileNames: '[name].js',
+      entryFileNames: '[name].cjs',
       dir,
       preserveModules: true
     },
@@ -25,7 +25,7 @@ export default {
     },
     {
       format: 'umd',
-      file: `${dir}/index.umd.js`,
+      file: `${dir}/index.umd.cjs`,
       name: 'GLSLBundler'
     }
   ],

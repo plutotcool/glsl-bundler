@@ -16,6 +16,6 @@ export default {
     cleaner({ targets: [path.dirname(pkg.main)] }),
     autoExternal(),
     eslint(),
-    ts(),
+    ts()
   ]
 }
