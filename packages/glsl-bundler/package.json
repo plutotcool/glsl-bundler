@@ -18,6 +18,36 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs",
       "browser": "./dist/index.umd.cjs"
+    },
+    "./bundler": {
+      "types": "./dist/bundler.d.ts",
+      "import": "./dist/bundler.mjs",
+      "require": "./dist/bundler.cjs",
+      "browser": "./dist/bundler.umd.cjs"
+    },
+    "./loader": {
+      "types": "./dist/loader.d.ts",
+      "import": "./dist/loader.mjs",
+      "require": "./dist/loader.cjs",
+      "browser": "./dist/loader.umd.cjs"
+    },
+    "./minifier": {
+      "types": "./dist/minifier.d.ts",
+      "import": "./dist/minifier.mjs",
+      "require": "./dist/minifier.cjs",
+      "browser": "./dist/minifier.umd.cjs"
+    },
+    "./transpiler": {
+      "types": "./dist/transpiler.d.ts",
+      "import": "./dist/transpiler.mjs",
+      "require": "./dist/transpiler.cjs",
+      "browser": "./dist/transpiler.umd.cjs"
+    },
+    "./writer": {
+      "types": "./dist/writer.d.ts",
+      "import": "./dist/writer.mjs",
+      "require": "./dist/writer.cjs",
+      "browser": "./dist/writer.umd.cjs"
     }
   },
   "files": [
