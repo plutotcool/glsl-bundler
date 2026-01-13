@@ -6,6 +6,10 @@ on:
     - beta
     - next
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -27,9 +31,6 @@ jobs:
     - run: |
         git config --local user.email "plutotcool+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-
-    - run: |
-        npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
 
     - run: yarn release --conventional-graduate --registry https://registry.npmjs.org
       if: ${{ github.ref_name == 'main' }}
