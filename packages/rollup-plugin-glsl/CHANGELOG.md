@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/plutotcool/glsl-bundler/compare/v1.2.1...v1.3.0) (2026-01-13)
+
+**Note:** Version bump only for package @plutotcool/rollup-plugin-glsl
+
+
+
+
+
 ## [1.2.1](https://github.com/plutotcool/glsl-bundler/compare/v1.2.0...v1.2.1) (2023-05-31)
 
 **Note:** Version bump only for package @plutotcool/rollup-plugin-glsl

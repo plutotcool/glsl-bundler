@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/plutotcool/glsl-bundler/compare/v1.2.1...v1.3.0) (2026-01-13)
+
+
+### Features
+
+* add submodule exports ([cff30b8](https://github.com/plutotcool/glsl-bundler/commit/cff30b81aeca42cb5a3e63c3911664693d13f5d9))
+
+
+
+
+
 ## [1.2.1](https://github.com/plutotcool/glsl-bundler/compare/v1.2.0...v1.2.1) (2023-05-31)
 
 **Note:** Version bump only for package @plutotcool/glsl-bundler
