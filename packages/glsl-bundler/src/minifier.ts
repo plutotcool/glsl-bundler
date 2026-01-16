@@ -2,7 +2,8 @@ import { bundler, Transform } from './bundler'
 
 const KEY_PATTERN = /@(\d+)@/g
 const DIRECTIVE_PATTERN = /^\s*(#.+?)\s*$/gm
-const COMMENTS_PATTERN = /(?:\/\/.*\n|\/\*(?:.|\n)+?\*\/)/g
+const SINGLE_LINE_COMMENT_PATTERN = /\/\/.*\n/g
+const MULTIPLE_LINE_COMMENT_PATTERN = /\/\*(?:.|\n)+?\*\//g
 const TOKEN_SPACE_PATTERN = /\s*([,;{}()?:=+-/*<>])\s*/g
 const LEADING_ZERO_PATTERN = /\b0+(\.\d+)/g
 const TRAILING_ZERO_PATTERN = /(\d+\.)0+\b/g
@@ -248,7 +249,9 @@ function renameDefinesTransform(source: string): string {
 }
 
 function trimCommentsTransform(source: string): string {
-  return source.replace(COMMENTS_PATTERN, '')
+  return source
+    .replace(SINGLE_LINE_COMMENT_PATTERN, '\n')
+    .replace(MULTIPLE_LINE_COMMENT_PATTERN, '')
 }
 
 function trimSpacesTransform(source: string): string {
