@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "name": "@plutotcool/glsl-bundler",
   "description": "Functional regex-based bundling tools for glsl",
   "author": "Julien Dargelos <julien@plutot.cool>",

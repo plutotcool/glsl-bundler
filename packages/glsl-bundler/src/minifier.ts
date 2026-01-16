@@ -12,7 +12,7 @@ const EXTRA_NEWLINE_PATTERN = /\n\n+/g
 const FUNCTION_PATTERN = /^.*?\b([a-z_]\w*)\s+([a-z_]\w*)\s*\(/gmi
 const VARIABLE_PATTERN = /^.*?\b\s*(?:(?:in|out|inout)\s+)?[a-zA-Z_]\w*\s+([a-zA-Z_]\w*)\s*[;,=)]/gm // eslint-disable-line max-len
 const STRUCT_PATTERN = /^.*?\bstruct\s+([a-zA-Z_]\w*)\s*\{/gm
-const DEFINE_PATTERN = /^#define\s+([^\s]+)/gm
+const DEFINE_PATTERN = /^\s*#define\s+([^\s]+)/gm
 const RETURN_PATTERN = /^return$/
 const MAIN_PATTERN = /^main$/
 const GROUP_PATTERN = /[{}()]/g

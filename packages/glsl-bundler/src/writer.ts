@@ -76,7 +76,10 @@ export function define(
   value: string | number | boolean | null = 1,
   location: WriterLocation = 0
 ): string {
-  const pattern = new RegExp(`^#define\\s+${escapeRegExp(constant)}.*$`, 'm')
+  const pattern = new RegExp(`^\\s*#define\\s+${
+    escapeRegExp(constant)
+  }\\s+.+$`, 'm')
+
   const line = value === null ? '' : `#define ${constant} ${value}`
 
   return pattern.test(source)
